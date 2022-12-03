@@ -75,15 +75,14 @@ void MyGLCanvas::drawScene() {
 	glm::vec4 rotateLightPos(0.0f, 0.0f, 1.0f, 0.0f);
 	rotateLightPos = glm::rotate(glm::mat4(1.0), TO_RADIANS(lightAngle), glm::vec3(0.0, 1.0, 0.0)) * rotateLightPos;
 
-	//TODO: passing the light position to the shader
-	//TODO: passing the integer useNormalMap to the shader
 	// pass light position to shader
 	glUniform3f(glGetUniformLocation(myShaderManager->program, "lightPosition"), rotateLightPos.x, rotateLightPos.y, rotateLightPos.z);
 	// pass time to shader
 	u_time += 0.1f;
 	glUniform1f(glGetUniformLocation(myShaderManager->program, "time"), u_time);
 
-
+    // passing the integer useNormalMap to the shader
+    glUniform1f(glGetUniformLocation(myShaderManager->program, "useNormalMap"), useNormalMap);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glEnable(GL_TEXTURE_2D);
