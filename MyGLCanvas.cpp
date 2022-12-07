@@ -78,11 +78,11 @@ void MyGLCanvas::drawScene() {
 	// pass light position to shader
 	glUniform3f(glGetUniformLocation(myShaderManager->program, "lightPosition"), rotateLightPos.x, rotateLightPos.y, rotateLightPos.z);
 	// pass time to shader
-	u_time += 0.1f;
-	glUniform1f(glGetUniformLocation(myShaderManager->program, "time"), u_time);
+	// u_time += 0.1f;
+	// glUniform1f(glGetUniformLocation(myShaderManager->program, "time"), u_time);
 
     // passing the integer useNormalMap to the shader
-    glUniform1f(glGetUniformLocation(myShaderManager->program, "useNormalMap"), useNormalMap);
+    glUniform1i(glGetUniformLocation(myShaderManager->program, "useNormalMap"), useNormalMap);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glEnable(GL_TEXTURE_2D);
